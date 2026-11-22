@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: clean_listings
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
+      - name: price
+        tests:
+          - not_null
+      - name: room_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
+      - name: borough
+        tests:
+          - not_null
+
+  - name: listings_with_distance
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
+      - name: distance_m
+        tests:
+          - not_null
+      - name: station_zone_min
+        tests:
+          - not_null
